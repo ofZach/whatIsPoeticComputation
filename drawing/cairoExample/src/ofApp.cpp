@@ -11,12 +11,13 @@ void ofApp::setup(){
     opengl = ofGetCurrentRenderer();                            // grab the current renderer
     
     
-    
+    ofSetVerticalSync(false);
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
 
+    cout << ofGetFrameRate() << endl;
     
 }
 
@@ -24,32 +25,77 @@ void ofApp::update(){
 void ofApp::draw(){
 
     
-    //--------------------------------------------------------  draw into cairo
-    ofSetCurrentRenderer(cairo);
+//    //--------------------------------------------------------  draw into cairo
+//    ofSetCurrentRenderer(cairo);
+//    
+//    ofClear(0,0,0, 255);                            // <---- we must clear, here we clear full alpha (opaque) black
+//    ofNoFill();
+//    ofSetColor(100,100,100);
+//    ofSetLineWidth(5);
+//    ofRect(30, 30,100,100);
+//    
+//    
+//    ofSetLineWidth(4);
+//    ofSetColor(255,255,255,255);                    // transparent line is helpful to see how this works.
+//    ofPolyline t;
+//    t.addVertex( 100,100 );
+//    t.addVertex( 200,100 );
+//    t.addVertex(mouseX,mouseY);
+//    t.addVertex( 400,400);
+//    t.draw();
+//    
+//    ofSeedRandom(mouseX);
+//     ofSetLineWidth(mouseY);
+//    
+//    vector < ofPoint > pts;
+//    for (int i = 0; i < 20; i++){
+//        pts.push_back( ofPoint(ofRandom(0,ofGetWidth()),
+//                               ofRandom(0,ofGetHeight())));
+//    }
+//    
+//    ofBeginShape();
+//    
+//    for (int i = 0; i < 20; i++){
+//        ofVertex(  pts[i]);
+//    }
+//    ofEndShape();
+//    
+//    
+//    ofSetLineWidth(mouseY * 0.8);
+//    ofSetColor(0,0,0,255);                    // transparent line is helpful to see how this works.
+//    
+//
+//    ofBeginShape();
+//    
+//    for (int i = 0; i < 20; i++){
+//        ofVertex(  pts[i]);
+//    }
+//    ofEndShape();
+//    
+//    
+//    //--------------------------------------------------------  draw into opengl
+//    ofSetCurrentRenderer(opengl);
+//    tex.loadData(cairo->getImageSurfacePixels());
+//    ofSetColor(255,255,255);
+//    tex.draw(0,0);
+//    ofDrawBitmapString("press a,s,d to change the line cap, press z,x,c to change the line join", 20,20);
     
-    ofClear(0,0,0, 255);                            // <---- we must clear, here we clear full alpha (opaque) black
-    ofNoFill();
-    ofSetColor(100,100,100);
-    ofSetLineWidth(5);
-    ofRect(30, 30,100,100);
     
     
-    ofSetLineWidth(20);
-    ofSetColor(255,255,255,100);                    // transparent line is helpful to see how this works.
-    ofPolyline t;
-    t.addVertex( 100,100 );
-    t.addVertex( 200,100 );
-    t.addVertex(mouseX,mouseY);
-    t.addVertex( 400,400);
-    t.draw();
-    
-    
-    //--------------------------------------------------------  draw into opengl
-    ofSetCurrentRenderer(opengl);
-    tex.loadData(cairo->getImageSurfacePixels());
-    ofSetColor(255,255,255);
-    tex.draw(0,0);
-    ofDrawBitmapString("press a,s,d to change the line cap, press z,x,c to change the line join", 20,20);
+    ofBeginShape();
+    ofCurveVertex(250,150);
+    ofCurveVertex(250,150);
+    ofCurveVertex(275,175);
+    ofCurveVertex(350,180);
+    ofCurveVertex(275,200);
+    ofCurveVertex(325,250);
+    ofCurveVertex(250,225);
+    ofCurveVertex(175,250);
+    ofCurveVertex(225,200);
+    ofCurveVertex(150,180);
+    ofCurveVertex(225,175);
+    ofCurveVertex(250,150);
+    ofEndShape();
     
     
     
